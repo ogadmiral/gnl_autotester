@@ -71,6 +71,15 @@ GNL_TESTER_C = r'''
 #include "get_next_line.h"
 #endif
 
+#include <stdio.h>
+
+void	print_gnl_banner(void)
+{
+	const char *color = "\033[36m"; // Cyan (change to your favorite)
+	const char *reset = "\033[0m";  // Reset color
+	printf("\n%s===== GNL TESTER BY ADMIRAL =====%s\n\n", color, reset);
+}
+
 int ok(char *got, char *expected)
 {
     if (!got && !expected) return 1;
@@ -102,7 +111,7 @@ int main(void)
     char *line;
     int fd;
 
-    printf("\n===== GNL TESTER =====\n\n");
+    print_gnl_banner();
 
     // -------------------- BASIC TESTS --------------------
     fd = open("test1.txt", O_RDONLY);
